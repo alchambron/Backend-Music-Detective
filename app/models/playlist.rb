@@ -1,3 +1,3 @@
 class Playlist < ApplicationRecord
-  has_many :playlist_content 
+  has_many :playlist_contents
 end
