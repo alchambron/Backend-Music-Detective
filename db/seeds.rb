@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+annee60 = Playlist.create(
+  genre: "Années 1960",
+  country: "International",
+  playlist_url: "RDCLAK5uy_nK5Gc1RXC3Qj5f6q2q8yKSNHP9bc-5td0"
+)
+
+annee70 = Playlist.create(
+  genre: "Années 1970",
+  country: "International",
+  playlist_url: "RDCLAK5uy_l9zGPtwEeIpwVXtBZ216yRhklsre5bbOM"
+)
+
+annee80 = Playlist.create(
+  genre: "Années 1980",
+  country: "International",
+  playlist_url: "RDCLAK5uy_k0l94lEKnWoV7TFPCbdtubvekIRsNAlyE"
+)
+
+puts "Seed : Done"
