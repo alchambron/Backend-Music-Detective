@@ -1,7 +1,6 @@
 class PlaylistContentsController < ApplicationController
   before_action :set_playlist_content, only: %i[show update destroy]
   require 'yt'
-  require 'dotenv'
 
   Yt.configuration.api_key = ENV['YOUTUBE_API']
 
