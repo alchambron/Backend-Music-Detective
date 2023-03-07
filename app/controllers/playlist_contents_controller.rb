@@ -1,27 +1,25 @@
 class PlaylistContentsController < ApplicationController
   before_action :set_playlist_content, only: %i[show update destroy]
   require 'yt'
+  require 'dotenv'
 
-  Yt.configuration.api_key = 'AIzaSyCFT7vH21ACuKywAblX0SzeD4uAA2594JI'
+  Yt.configuration.api_key = ENV['YOUTUBE_API']
 
   def add_song_playlist_content
     def get_playlist_videos(playlist_url, playlist_id)
       playlist = Yt::Playlist.new id: playlist_url
-
       playlist.playlist_items.each do |video|
         existing_item = PlaylistContent.find_by(youtube_title: video.title)
-
         if existing_item
-          puts 'nope'
+          break
         else
-          PlaylistContent.create(youtube_title: video.title, playlist_id: playlist_id)
+          PlaylistContent.create(youtube_title: video.title, youtube_id: video.video_id, playlist_id: playlist_id)
         end
       end
     end
 
-    # Parcourt toutes les playlists de manière asynchrone
-    Playlist.all.each do |content|
-      get_playlist_videos(content.playlist_url, content.id).load_async
+    Playlist.all.each do |playlist|
+      get_playlist_videos(playlist.playlist_url, playlist.id)
     end
   end
 
