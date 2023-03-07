@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_07_081701) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_083509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "playlist_contents", force: :cascade do |t|
+    t.string "youtube_title"
+    t.string "youtube_id"
+    t.bigint "playlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id"], name: "index_playlist_contents_on_playlist_id"
+  end
 
   create_table "playlists", force: :cascade do |t|
     t.string "country"
@@ -22,4 +31,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_081701) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "playlist_contents", "playlists"
 end
