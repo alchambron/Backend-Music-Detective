@@ -5,9 +5,15 @@ annee60 = Playlist.create(
 )
 
 annee70 = Playlist.create(
-  genre: "Année 1970",
+  genre: "Années 1970",
   country: "International",
   playlist_url: "RDCLAK5uy_l9zGPtwEeIpwVXtBZ216yRhklsre5bbOM"
+)
+
+annee80 = Playlist.create(
+  genre: "Années 1980",
+  country: "International",
+  playlist_url: "RDCLAK5uy_k0l94lEKnWoV7TFPCbdtubvekIRsNAlyE"
 )
 
 puts "Seed : Done"
