@@ -52,3 +52,5 @@ group :development do
 end
 
 gem 'dotenv-rails', groups: %i[development test]
+
+gem "devise-jwt", "~> 0.10.0"
