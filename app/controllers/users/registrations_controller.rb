@@ -1,4 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
+
+def create
+    super do |resource|
+      UserMailer.welcome_email(resource)
+    end
+  end
+
+
   respond_to :json
 
   private
