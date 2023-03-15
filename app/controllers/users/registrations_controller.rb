@@ -1,12 +1,14 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-
-
-def create
+  def create
     super do |resource|
       UserMailer.welcome_email(resource)
     end
   end
 
+  def destroy
+    current_user.destroy
+    render(json: { message: 'Utilisateur supprimé avec succès.' }, status: :ok)
+  end
 
   respond_to :json
 
@@ -19,13 +21,10 @@ def create
   end
 
   def register_success
-    render json: {
-      message: 'Signed up sucessfully.',
-      user: current_user
-    }, status: :ok
+    render(json: { message: 'Signed up sucessfully.', user: current_user }, status: :ok)
   end
 
   def register_failed
-    render json: { message: 'Signed failled.' }, status: :unprocessable_entity
+    render(json: { message: 'Signed failled.' }, status: :unprocessable_entity)
   end
 end
