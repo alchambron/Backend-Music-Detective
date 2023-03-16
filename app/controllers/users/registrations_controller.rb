@@ -5,9 +5,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update
+    if current_user.update(user_params)
+      render(json: { message: 'User information updated successfully.', user: current_user }, status: :ok)
+    else
+      render(json: { message: 'Unable to update user information.' }, status: :unprocessable_entity)
+    end
+  end
+
   def destroy
     current_user.destroy
-    render(json: { message: 'Utilisateur supprimé avec succès.' }, status: :ok)
+    render(json: { message: 'User deleted successfully' }, status: :ok)
   end
 
   respond_to :json
@@ -26,5 +34,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def register_failed
     render(json: { message: 'Signed failled.' }, status: :unprocessable_entity)
+  end
+
+  def user_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
   end
 end
