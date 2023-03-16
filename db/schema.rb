@@ -41,11 +41,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_15_115011) do
 
   create_table "playlists", force: :cascade do |t|
     t.string "country"
-    t.integer "year"
-    t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "playlist_url"
+    t.string "title"
+    t.string "thumbnail_url"
+    t.string "playlist_type"
   end
 
   create_table "users", force: :cascade do |t|

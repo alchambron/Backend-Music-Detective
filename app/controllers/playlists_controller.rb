@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: %i[ show update destroy ]
+  before_action :set_playlist, only: %i[show update destroy]
 
   # GET /playlists
   def index
@@ -39,13 +39,14 @@ class PlaylistsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_playlist
-      @playlist = Playlist.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def playlist_params
-      params.fetch(:playlist, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_playlist
+    @playlist = Playlist.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def playlist_params
+    params.require(:playlist).permit(:title, :playlist_type, :country, :playlist_url, :thumbnail_url)
+  end
 end

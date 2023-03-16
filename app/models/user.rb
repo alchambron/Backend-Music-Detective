@@ -1,11 +1,10 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable, :jwt_authenticatable, jwt_revocation_strategy: JwtDenylist
  
-  devise :database_authenticatable, :registerable,
-    :jwt_authenticatable,
-    jwt_revocation_strategy: JwtDenylist
-
-  before_save :set_nickname
    has_many :games
+  before_save :set_nickname
+  validates :email, uniqueness: true
+
   private
 
   def set_nickname
@@ -16,6 +15,4 @@ class User < ApplicationRecord
   # def welcome_send
   #   UserMailer.welcome_email(self).deliver_now
   # end
-
 end
-
