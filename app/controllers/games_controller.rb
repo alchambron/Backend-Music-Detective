@@ -12,7 +12,7 @@ before_action :set_game, only: %i[ show update destroy]
   end
 
   def create
-    @game = current_user.games.new()
+    @game = Game.new()
 
    if @game.save
       render json: @game, status: :created, location: @game
