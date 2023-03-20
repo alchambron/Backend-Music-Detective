@@ -22,6 +22,12 @@ class PlaylistContentsController < ApplicationController
     end
   end
 
+  def get_playlist_data
+    playlist_choose = PlaylistContent.where(playlist_choice_params)
+
+    render json: playlist_choose
+  end
+
   # GET /playlist_contents
   def index
     @playlist_contents = PlaylistContent.all
@@ -69,5 +75,9 @@ class PlaylistContentsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def playlist_content_params
     params.require(:playlist_content).permit(:youtube_title, :youtube_id, :playlist_id)
+  end
+
+  def playlist_choice_params
+    params.require(:playlist_content).permit(:playlist_id)
   end
 end
