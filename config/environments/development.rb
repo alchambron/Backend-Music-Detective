@@ -55,12 +55,12 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp-relay.sendinblue.com',
-    port: 587,
-    user_name: ENV.fetch('SENDINBLUE_LOGIN', nil),
-    password: ENV.fetch('SENDINBLUE_PWD', nil),
-    authentication: 'login',
-    enable_starttls_auto: true
+    :address => 'smtp-relay.sendinblue.com',
+    :port => 587,
+    :user_name => ENV['SENDINBLUE_LOGIN'],
+    :password => ENV['SENDINBLUE_PWD'],
+    :authentication => 'login',
+    :enable_starttls_auto => true
   }
 
   # Raises error for missing translations.
