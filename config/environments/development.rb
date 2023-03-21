@@ -1,4 +1,4 @@
-require "active_support/core_ext/integer/time"
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -19,11 +19,9 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join("tmp/caching-dev.txt").exist?
+  if Rails.root.join('tmp/caching-dev.txt').exist?
     config.cache_store = :memory_store
-    config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
-    }
+    config.public_file_server.headers = { 'Cache-Control' => "public, max-age=#{2.days.to_i}" }
   else
     config.action_controller.perform_caching = false
 
@@ -37,7 +35,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
-config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -53,21 +51,17 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address => 'smtp-relay.sendinblue.com',
-    :port => 587,
-    :user_name => ENV['SENDINBLUE_LOGIN'],
-    :password => ENV['SENDINBLUE_PWD'],
-    :authentication => 'login',
-    :enable_starttls_auto => true
+    address: 'smtp-relay.sendinblue.com',
+    port: 587,
+    user_name: ENV.fetch('SENDINBLUE_LOGIN', nil),
+    password: ENV.fetch('SENDINBLUE_PWD', nil),
+    authentication: 'login',
+    enable_starttls_auto: true
   }
-
-
-
-
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
@@ -77,4 +71,6 @@ config.action_mailer.raise_delivery_errors = true
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.hosts.clear
 end
