@@ -12,7 +12,7 @@ before_action :set_game, only: %i[ show update destroy]
   end
 
   def create
-    @game = Game.new()
+    @game = Game.new(game_params)
 
    if @game.save
       render json: @game, status: :created, location: @game
@@ -39,6 +39,6 @@ before_action :set_game, only: %i[ show update destroy]
 
   end
   def game_params
-    params.permit(:score)
+    params.permit(:score, :user)
   end
 end
