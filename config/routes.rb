@@ -7,8 +7,7 @@ Rails.application.routes.draw do
                sessions: 'users/sessions',
                registrations: 'users/registrations'
              }
-             resource:passwords, only: [:create]
-             
+           
   resources :playlist_contents
   resources :playlists
   get 'add_song', to: "playlist_contents#add_song_playlist_content"
