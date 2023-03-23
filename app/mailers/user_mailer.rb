@@ -1,4 +1,4 @@
-class UserMailer < ApplicationMailer
+class UserMailer < Devise::Mailer
   default from: 'administrateur@musicDetective.com'
 
   def welcome_email(user)
@@ -6,4 +6,9 @@ class UserMailer < ApplicationMailer
     @url  = ['http://example.com/login']
     mail(to: @user.email, subject: ['Bienvenue sur musicDetective'])
   end
+
+ def reset_password_instructions(record, token, opts={})
+   super
+ end
+
 end
