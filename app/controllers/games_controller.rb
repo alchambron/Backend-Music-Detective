@@ -3,8 +3,12 @@ before_action :set_game, only: %i[ show update destroy]
   def index
     @games = Game.all
     render json: @games
-   
+  end
 
+  def get_user_stats
+    @game = Game.where(get_stats_params)
+
+    render json: @game
   end
 
   def show
@@ -40,5 +44,9 @@ before_action :set_game, only: %i[ show update destroy]
   end
   def game_params
     params.permit(:score, :user)
+  end
+
+  def get_stats_params
+    params.permit(:user)
   end
 end
