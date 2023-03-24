@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 	validates :password, presence: true, length: { minimum: 6 }
   validates_uniqueness_of :nickname
-  before_save :set_nickname, :set_is_admin
+  before_save :set_nickname
   validates :email, uniqueness: true
 
   private
