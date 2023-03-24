@@ -1,19 +1,8 @@
-annee60 = Playlist.create(
-  playlist_type: "Années 1960",
-  country: "International",
-  playlist_url: "RDCLAK5uy_nK5Gc1RXC3Qj5f6q2q8yKSNHP9bc-5td0"
-)
-
-annee70 = Playlist.create(
-  playlist_type: "Années 1970",
-  country: "International",
-  playlist_url: "RDCLAK5uy_l9zGPtwEeIpwVXtBZ216yRhklsre5bbOM"
-)
-
-annee80 = Playlist.create(
-  playlist_type: "Années 1980",
-  country: "International",
-  playlist_url: "RDCLAK5uy_k0l94lEKnWoV7TFPCbdtubvekIRsNAlyE"
+admin = User.create(
+  nickname: "Les 3 mousquetaires",
+  email: "admin@admin.fr",
+  password: ENV['ADMIN_MDP'],
+  is_admin: true
 )
 
 puts "Seed : Done"
